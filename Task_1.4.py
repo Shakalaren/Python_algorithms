@@ -27,54 +27,59 @@ users = {'Andrew': {'password': 'qwerty', 'activated': 1},
 
 # Решение 1: O(1)
 
-def Authentication():
+def authentication():
     user = input('Введите логин: ')
-    CurrentUser = users.get(user)
-    if not CurrentUser:
+    current_user = users.get(user)
+    if not current_user:
         print('Пользователь не найден')
         return False
 
     password = input('Введите пароль: ')
-    if password != CurrentUser['password']:
+    if password != current_user['password']:
         print('Пароль неверный!')
         return False
 
-    if CurrentUser['activated'] == 0:
-        input('Пользователь не активирован')
+    if current_user['activated'] == 0:
+        print('Пользователь не активирован')
         return False
     else:
         print('Welcome!')
 
 
-Authentication()
+authentication()
 
 
 # Решение 2: O(n)
 
-def AuthenticationCheck(users):
+def authentication_check():
+    user_check = []
     user = input('Введите логин: ')
-    CurrentUser = users.get(user)
-    if not CurrentUser:
+    current_user = users.get(user)
+    if not current_user:
         print('Пользователь не зарегистрирован!')
         return False
 
     password = input('Введите пароль: ')
-    if password != CurrentUser['password']:
+    if password != current_user['password']:
         print('Пароль неверный!')
         return False
 
-    if CurrentUser['activated'] == 0:
-        activation = input('Пользователь не активирован! Введите свой логин для активации ')
-        while activation != CurrentUser:
-            activation = input('Ошибка, введите свой логин: ')
+    if current_user['activated'] == 0:
+        print('Пользователь не активирован! Пожалуйста, пройдите верификацию')
+        for i in user: #O(n)
+            user_check.append(i)
+        activation = input('Напишите любую букву, которая есть в Вашем логине: ')
+        while activation not in user_check:
+            activation = input('Напишите любую букву, которая есть в Вашем логине: ')
         else:
-            CurrentUser['activated'] = 1
+            current_user['activated'] = 1
             print('Activation complete')
     else:
         print('Welcome!')
 
 
-AuthenticationCheck(users)
+authentication_check()
+
 
 # Решение 1 является более оптимальным и эффективным, так как затрачивает меньше ресурсов и времени, однако решение 2
 # обладает сравнительно бОльшим функционалом и именно поэтому становится чуть более затратным.
