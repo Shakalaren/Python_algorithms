@@ -18,7 +18,7 @@ Companies = {'Nvidia' : 269294, 'AMD' : 2742295, 'Intel' : 1043374, 'Qualcomm' :
 print(heapq.nlargest(3, Companies.items(), key=operator.itemgetter(1))) # O(n)
 
 
-#2 вариант O(n^3). Данный вариант работает при условии, что мы знаем изначальное количество компаний.
+#2 вариант O(n^2). Данный вариант работает при условии, что мы знаем изначальное количество компаний.
 Companies = {'Nvidia': 269294, 'AMD': 2742295, 'Intel': 1043374, 'Qualcomm': 1848435, 'Sony': 1195322, 'Microsoft': 38184642} #O(1)
 copy_of_dict = Companies.copy() #O(1)
 i = 0 #O(1)
@@ -27,7 +27,7 @@ while i != 3: #O(1)
     for k, v in zip(Companies.keys(), Companies.values()): #O(n)
         if v == min(copy_of_dict.values()): #O(n)
             copy_of_dict.pop(k, v) #O(1)
-            i = i+1 #O(n)
+            i = i+1 #O(1)
 
 print(copy_of_dict) #O(1)
 
