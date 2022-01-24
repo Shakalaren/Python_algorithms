@@ -23,19 +23,21 @@ import hashlib
 from uuid import uuid4
 
 storage = []
-password = input('Введите пароль: ')
 salt = uuid4().hex
-res = hashlib.sha256(salt.encode() + password.encode()).hexdigest()
-storage.append(res)
-print(f'В базе хранится строка: {storage}')
 
-def passwordCheck():
-    nextPassword = input('Введите пароль еще раз: ')
-    res2 = hashlib.sha256(salt.encode() + nextPassword.encode()).hexdigest()
+def password_enter():
+    password = input('Введите пароль: ')
+    res = hashlib.sha256(salt.encode() + password.encode()).hexdigest()
+    storage.append(res)
+    print(f'В базе хранится строка: {storage}')
+
+def password_check():
+    next_password = input('Введите пароль еще раз: ')
+    res2 = hashlib.sha256(salt.encode() + next_password.encode()).hexdigest()
     if res2 in storage:
         print('Вы ввели верный пароль')
     else:
         print('Вы ввели неверный пароль')
 
-
-passwordCheck()
+password_enter()
+password_check()
