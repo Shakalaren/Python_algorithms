@@ -3,17 +3,17 @@ from uuid import uuid4
 
 
 salt = uuid4().hex
-cachStorage = {}
+cach_storage = {}
 
-def checkUrl(url):
-    if cachStorage.get(url):
+def check_url(url):
+    if cach_storage.get(url):
         print('Данный адрес присутствует в кэше')
     else:
         res = hashlib.sha256(salt.encode() + url.encode()).hexdigest()
-        cachStorage[url] = res
-        print(cachStorage)
+        cach_storage[url] = res
+        print(cach_storage)
 
 
 while True:
-    userInput = input('Введите url: ')
-    checkUrl(userInput)
+    user_input = input('Введите url: ')
+    check_url(user_input)

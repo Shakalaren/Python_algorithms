@@ -18,19 +18,18 @@
 р
 а
 """
-
 import hashlib
 
-userInput = input('Введите слово: ')
+user_input = input('Введите слово: ')
 
-def strCount(userInput):
-    storage = str(userInput)
-    hashStorage = set()
+def str_count(user_input):
+    storage = str(user_input)
+    hash_storage = set()
 
-    for i in range(len(userInput) + 1):
-        for j in range(i + 1, len(userInput) + 1):
-            hashStorage.add(hashlib.sha256(userInput[i:j].encode()).hexdigest())
-    return len(hashStorage)
+    for i in range(len(user_input) + 1):
+        for j in range(i + 1, len(user_input) + 1):
+            hash_storage.add(hashlib.sha256(user_input[i:j].encode()).hexdigest())
+    return len(hash_storage)
 
 
-print(f'Количество уникальных подстрок: {strCount(userInput) - 1}')
+print(f'Количество уникальных подстрок: {str_count(user_input) - 1}')
