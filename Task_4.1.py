@@ -24,7 +24,7 @@ print("func_1 ", t1.timeit(number=10000000), "seconds")
 
 
 def func_2(nums):
-    my_arr = [i for i in range(len(nums)) if nums[i] % 2 == 0]
+    my_arr = [i for i in nums if nums[i] % 2 == 0]
     return my_arr
 
 
