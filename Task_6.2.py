@@ -121,30 +121,30 @@ Authentication()
 
 # Решение 2: O(n)
 
-def AuthenticationCheck(users):
+def authentication_check(users):
     user = input('Введите логин: ')
-    CurrentUser = users.get(user)
-    if not CurrentUser:
+    current_user = users.get(user)
+    if not current_user:
         print('Пользователь не зарегистрирован!')
         return False
 
     password = input('Введите пароль: ')
-    if password != CurrentUser['password']:
+    if password != current_user['password']:
         print('Пароль неверный!')
         return False
 
-    if CurrentUser['activated'] == 0:
+    if current_user['activated'] == 0:
         activation = input('Пользователь не активирован! Введите свой логин для активации ')
-        while activation != CurrentUser:
+        while activation != current_user:
             activation = input('Ошибка, введите свой логин: ')
         else:
-            CurrentUser['activated'] = 1
+            current_user['activated'] = 1
             print('Activation complete')
     else:
         print('Welcome!')
 
 
-AuthenticationCheck(users)
+authentication_check(users)
 
 # Решение 1 является более оптимальным и эффективным, так как затрачивает меньше ресурсов и времени, однако решение 2
 # обладает сравнительно бОльшим функционалом и именно поэтому становится чуть более затратным.

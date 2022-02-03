@@ -32,9 +32,13 @@ for i in my_list:
         print(i)
 
 #Стало:
+
 #Первый алгоритм:
 def create_list(numbers):
-    my_list = [num for num in range(numbers)]
+    my_gen = (num for num in range(numbers))
+    my_list = []
+    for i in my_gen:
+        my_list.append(i)
     print(f'Память после ленивого вычисления равна: {asizeof.asizeof(my_list)}')
     mins = my_list[0]
     for i in my_list:
@@ -43,6 +47,7 @@ def create_list(numbers):
     print(mins)
 
 create_list(6)
+
 #Второй алгоритм:
 my_list0 = [10, 20, 300, -1, -5, 1]
 mins = my_list0[0]
